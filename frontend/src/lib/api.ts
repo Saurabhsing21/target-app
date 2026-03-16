@@ -1,7 +1,21 @@
 import { getEnv } from "./env";
 import { useAuthStore } from "../stores/authStore";
 
-const API_BASE_URL = getEnv("VITE_API_BASE_URL", "http://localhost:8000")!;
+function resolveApiBaseUrl() {
+  const configured = getEnv("VITE_API_BASE_URL");
+  if (configured) return configured.replace(/\/$/, "");
+
+  if (typeof window !== "undefined") {
+    const { hostname } = window.location;
+    if (hostname === "localhost" || hostname === "127.0.0.1") {
+      return "http://localhost:8000";
+    }
+  }
+
+  throw new Error("Missing VITE_API_BASE_URL");
+}
+
+const API_BASE_URL = resolveApiBaseUrl();
 
 type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
