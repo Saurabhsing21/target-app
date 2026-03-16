@@ -1,11 +1,12 @@
 **/__pycache__/
 **/*.pyc
-**- [/] Push code to GitHub <!-- id: 0 -->
-    - [x] Try SSH push (failed: timeout) <!-- id: 1 -->
-    - [x] Try HTTPS push (failed: 403 Forbidden) <!-- id: 3 -->
-    - [x] Update remote with username `saurabh-emulateai` <!-- id: 5 -->
-    - [ ] Ignore .db files and commit context <!-- id: 6 -->
-    - [ ] Retry push <!-- id: 7 -->
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+
+frontend/node_modules/
+frontend/dist/
 
 backend/.venv/
 
